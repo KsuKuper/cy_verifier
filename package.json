@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "rollup -c",
+    "start": "http-server",
+    "test": "cypress run",
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run"
+    "cy:run": "npx cypress run",
+    "cy:dashboard": "npx cypress run --record --key 2b9ab1b5-bbf9-4069-ac88-2d46b579d742"
   },
   "author": "",
   "license": "ISC",
