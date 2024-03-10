@@ -2,8 +2,9 @@
 
 describe("Verifier App", () => {
   beforeEach(() => {
+    Cypress.config("baseUrl", "https://sqlverifier-live-6e21ca0ed768.herokuapp.com");
     cy.visit(
-      "https://sqlverifier-live-6e21ca0ed768.herokuapp.com/?page=1&sort=id,asc"
+      "/?page=1&sort=id,asc"
     );
   });
   it("Tasks are displayed by default", () => {

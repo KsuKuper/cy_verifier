@@ -1,5 +1,6 @@
 describe("Verifier App", () => {
   beforeEach("Open Verifier app", () => {
+    Cypress.config("baseUrl", "https://sqlverifier-live-6e21ca0ed768.herokuapp.com");
     cy.visit("/?page=1&sort=id,asc");
     cy.log("Current baseUrl" + Cypress.config('baseUrl'))
   });
