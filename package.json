@@ -8,7 +8,10 @@
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "cy:dashboard": "npx cypress run --record --key 2b9ab1b5-bbf9-4069-ac88-2d46b579d742",
-    "cy:run_config-2": "npx cypress run --config-file cypress-2.config.js"
+    "cy:run_config-2": "npx cypress run --config-file cypress-2.config.js",
+    "cy:run:chrome": "npx cypress run --browser chrome",
+    "cy:run::electron": "npx cypress run --browser electron",
+    "cy:run:dashboard": "npx cypress run --browser chrome && npx cypress run --browser electron && npx cypress run --record --key 2b9ab1b5-bbf9-4069-ac88-2d46b579d742"
   },
   "author": "",
   "license": "ISC",
