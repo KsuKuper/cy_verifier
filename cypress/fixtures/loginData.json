@@ -1,0 +1,30 @@
+[
+  {
+  "username": "ksu158",
+  "password": "12345"
+},
+{
+  "username": " ",
+  "password": " "
+},
+{
+  "username": " ksu158",
+  "password": "12345"
+},
+{
+  "username": "ksu158 ",
+  "password": "12345 "
+},
+{
+  "username": "ksu 158",
+  "password": "123 45"
+},
+{
+  "username": "@#$^&",
+  "password": "12345"
+},
+{
+  "username": "KSU",
+  "password": "12345"
+}
+]

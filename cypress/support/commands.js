@@ -12,10 +12,74 @@ Cypress.Commands.add("checkLanguageDisplay", () => {
   }
 });
 
-Cypress.Commands.add("login", (username, password) => {
+// Cypress.Commands.add("register", (username, email, password, passwordConfirm) => {
+//   cy.get("[data-cy='accountMenu'] > .d-flex")
+//     .should("be.visible")
+//     .click();
+//   cy.get("[data-cy='register']").click();
+//   cy.get("[data-cy='username']").should('exist').type(username);
+//   cy.get("[data-cy='email']").should('exist').type(email);
+//   cy.get("[data-cy='firstPassword']").should('exist').type(password);
+//   cy.get("[data-cy='secondPassword']").should('exist').type(passwordConfirm);
+//   cy.get("[data-cy='submit']").should('exist').click();
+// });
+
+// Cypress.Commands.add("cleanupData", () => {
+//   cy.get("[data-cy='accountMenu'] > .d-flex")
+//     .should("be.visible")
+//     .click();
+//   cy.get("[data-cy='register']").click();
+//   cy.get("[data-cy='username']").clear();
+//   cy.get("[data-cy='email']").clear();
+//   cy.get("[data-cy='firstPassword']").clear();
+//   cy.get("[data-cy='secondPassword']").clear();
+// });
+
+Cypress.Commands.add(
+  "register",
+  (username, email, password, passwordConfirm) => {
+    cy.get("[data-cy='accountMenu'] > .d-flex").should("be.visible").click();
+    cy.get("[data-cy='register']").click();
+    const formFields = {
+      "[data-cy='username']": username,
+      "[data-cy='email']": email,
+      "[data-cy='firstPassword']": password,
+      "[data-cy='secondPassword']": passwordConfirm,
+    };
+    Object.keys(formFields).forEach((selector) => {
+      cy.get(selector).should("exist").type(formFields[selector]);
+    });
+    cy.get("[data-cy='submit']").should("exist").click();
+  }
+);
+
+Cypress.Commands.add("cleanupData", () => {
   cy.get("[data-cy='accountMenu'] > .d-flex").should("be.visible").click();
-  cy.get("[data-cy='login']").click();
-  cy.get("[data-cy='username']").type(username);
-  cy.get("[data-cy='password']").type(password);
-  cy.get("[data-cy='submit']").click();
+  cy.get("[data-cy='register']").click();
+  const formFields = [
+    "[data-cy='username']",
+    "[data-cy='email']",
+    "[data-cy='firstPassword']",
+    "[data-cy='secondPassword']",
+  ];
+  formFields.forEach((selector) => {
+    cy.get(selector).clear();
+  });
 });
+
+Cypress.Commands.add(
+  "login",
+  (username, password) => {
+    cy.get("[data-cy='accountMenu'] > .d-flex").should("be.visible").click();
+    cy.get("[data-cy='login']").click();
+    const formFields = {
+      "[data-cy='username']": username,
+      "[data-cy='password']": password
+    };
+    Object.keys(formFields).forEach((selector) => {
+      cy.get(selector).should("exist").type(formFields[selector]);
+    });
+    cy.get("[data-cy='submit']").click();
+    cy.get("[data-cy='submit']").should("exist").click();
+  }
+);

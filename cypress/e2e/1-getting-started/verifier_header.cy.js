@@ -1,3 +1,5 @@
+const loginData = require("../../fixtures/loginData.json");
+
 describe("Verifier App", () => {
   beforeEach("Open Verifier app", () => {
     Cypress.config(
@@ -24,13 +26,5 @@ describe("Verifier App", () => {
   });
   it("Navbar are displayed the language", () => {
     cy.checkLanguageDisplay();
-  });
-  it("Navbar are displayed the account for different users", () => {
-    // Sing in by user
-    cy.login("ksu158", "12345");
-    cy.get(".btn-secondary").click();
-    // Sign in by admin
-    cy.login("admin_automation", "admin_automation");
-    cy.get(".btn-secondary").click();
   });
 });
